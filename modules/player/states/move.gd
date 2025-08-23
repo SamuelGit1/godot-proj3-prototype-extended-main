@@ -3,11 +3,11 @@ extends PlayerState
 const ANIMATION = "Running_B"
 const SPEED = 5.0
 
-func enter(previous_state_path: String, data := {}) -> void:
-	var input_dir = data.get("input_dir", Vector2.ZERO)
+func enter(_previous_state_path: String, data := {}) -> void:
+	var _input_dir = data.get("input_dir", Vector2.ZERO)
 	player.anim.play(ANIMATION)
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		finished.emit(ATTACK, {})
 		

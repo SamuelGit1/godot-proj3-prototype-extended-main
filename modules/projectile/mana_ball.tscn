@@ -14,8 +14,8 @@ script = ExtResource("1_77ye4")
 shape = SubResource("SphereShape3D_yrk0v")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-radial_segments = 4
-rings = 3
+radial_segments = 20
+rings = 12
 material = SubResource("StandardMaterial3D_yrk0v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

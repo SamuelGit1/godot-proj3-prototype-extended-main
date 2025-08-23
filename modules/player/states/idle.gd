@@ -1,12 +1,12 @@
 extends PlayerState
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, _data := {}) -> void:
 	if _is_move_input():
 		finished.emit(MOVE, {})
 	else:
 		player.anim.play("Idle")
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if _is_move_input():
 		finished.emit(MOVE, {})
 	elif Input.is_action_just_pressed("attack"):

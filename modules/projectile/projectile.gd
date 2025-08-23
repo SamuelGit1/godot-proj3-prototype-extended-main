@@ -2,7 +2,7 @@ extends Area3D
 
 var target: CharacterBody3D
 var speed = 20
-var attack_power = 50
+var attack_power = 25
 
 func _ready() -> void:
 	# Lift the ball up by 1 unit in y-direction

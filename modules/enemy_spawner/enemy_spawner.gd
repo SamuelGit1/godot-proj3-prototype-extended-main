@@ -5,7 +5,6 @@ extends Node3D
 @export var spawn_interval = 3.0
 @export var spawn_distance_from_edge = 1.0
 
-
 func _on_timer_timeout() -> void:
 	spawn_enemy_at_edge()
 
@@ -56,3 +55,9 @@ func spawn_enemy_at_edge():
 	var enemy = enemy_scene.instantiate()
 	get_parent().add_child(enemy)
 	enemy.global_position = spawn_pos + Vector3(0, 1, 0) # Adjust height if needed
+
+
+func _on_player_died(is_dead: bool) -> void:
+	print("PLAYER DIED: " + str(is_dead))
+	if (is_dead):
+		$Timer.stop()

@@ -8,7 +8,7 @@ const ATTACK_CD = 1.0
 var enemies: Array[CharacterBody3D] = []
 var attack_timer = 0.0
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, _data := {}) -> void:
 	if enemies.is_empty():
 		finished.emit(IDLE, {})
 		return
@@ -19,7 +19,7 @@ func _physics_process(delta):
 	if attack_timer > 0:
 		attack_timer -= delta
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	check_dead_enemies()
 
 	if enemies.is_empty():
