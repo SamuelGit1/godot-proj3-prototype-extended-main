@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnv1x6nyb3vtf"]
+
+[ext_resource type="Script" uid="uid://cos5m6o611axl" path="res://modules/player/states/player_state.gd" id="1_pltnb"]
+
+[node name="PlayerState" type="Node3D"]
+script = ExtResource("1_pltnb")

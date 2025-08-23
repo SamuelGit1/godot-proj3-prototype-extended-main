@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b08cvons57lqn"]
+
+[ext_resource type="Script" path="res://modules/projectile/projectile.gd" id="1_77ye4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yrk0v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrk0v"]
+albedo_color = Color(0.81006, 0.514248, 0.887853, 1)
+
+[node name="ManaBall" type="Area3D"]
+script = ExtResource("1_77ye4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yrk0v")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radial_segments = 4
+rings = 3
+material = SubResource("StandardMaterial3D_yrk0v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
