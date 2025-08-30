@@ -58,6 +58,5 @@ func spawn_enemy_at_edge():
 
 
 func _on_player_died(is_dead: bool) -> void:
-	print("PLAYER DIED: " + str(is_dead))
 	if (is_dead):
 		$Timer.stop()

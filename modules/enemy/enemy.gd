@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+@onready var enemyAttackSfx = $enemyAttack
+@onready var enemyDieSfx = $enemyDie
+
 const SPEED = 5.0
 const ATTACK_ANIM = "1H_Melee_Attack_Chop"
 const ATTACK_CD = 1.0
@@ -53,7 +56,6 @@ func move_to_player():
 func hit_player():
 	anim.play(ATTACK_ANIM)
 
-
 func take_hit(damage: float):
 	if is_dead: return
 	
@@ -63,6 +65,7 @@ func take_hit(damage: float):
 	
 	if (is_dead):
 		anim.play("Death_A")
+		enemyDieSfx.play()
 
 func _on_attack_range_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -77,6 +80,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		anim.play("Idle")
 		attack_timer = ATTACK_CD
 		player.take_hit(ATTACK_POWER)
+		enemyAttackSfx.play()
 		
 	if anim_name == "Death_A":
 		$CollisionShape3D.disabled = true
@@ -85,4 +89,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_player_dead(is_dead: bool):
 	anim.play("Cheer")
-	is_cheering = is_dead
+	is_cheering = true

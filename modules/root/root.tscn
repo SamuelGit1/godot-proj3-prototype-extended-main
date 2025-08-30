@@ -78,4 +78,6 @@ use_collision = true
 size = Vector3(50, 1, 50)
 material = SubResource("StandardMaterial3D_qa74a")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="died" from="Player" to="EnemySpawner" method="_on_player_died"]

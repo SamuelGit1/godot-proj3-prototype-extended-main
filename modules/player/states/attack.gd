@@ -1,6 +1,7 @@
 extends PlayerState
 
 @export var projectile_scene: PackedScene
+@onready var playerAttackSfx = $playerAttackSfx
 
 const ATTACK_ANIM = "1H_Melee_Attack_Chop"
 const ATTACK_CD = 1.0
@@ -14,6 +15,7 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 		return
 
 	player.anim.play(ATTACK_ANIM)
+	playerAttackSfx.play()
 
 func _physics_process(delta):
 	if attack_timer > 0:
@@ -65,3 +67,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		attack_timer = ATTACK_CD
 
 	finished.emit(IDLE, {})
+
+func exit():
+	playerAttackSfx.stop()

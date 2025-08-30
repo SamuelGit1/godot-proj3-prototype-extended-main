@@ -1,11 +1,14 @@
 extends PlayerState
 
+@onready var walkingSfx = $walking
+
 const ANIMATION = "Running_B"
 const SPEED = 5.0
 
 func enter(_previous_state_path: String, data := {}) -> void:
 	var _input_dir = data.get("input_dir", Vector2.ZERO)
 	player.anim.play(ANIMATION)
+	walkingSfx.play()
 
 func physics_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
@@ -24,3 +27,6 @@ func physics_update(_delta: float) -> void:
 		player.velocity.z = move_toward(player.velocity.z, 0, SPEED)
 	
 	player.move_and_slide()
+
+func exit():
+	walkingSfx.stop()
